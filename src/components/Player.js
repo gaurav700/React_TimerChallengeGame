@@ -3,17 +3,10 @@ import { useRef } from "react";
 
 export default function Player() {
   const [name, setName] = useState();
-  // function handleChange(name) {
-  //   setButtonClicked(false);
-  //   setName(name);
-  // }
-  // function handleButton() {
-  //   setButtonClicked(true);
-  // }
-
-  let names = useRef();
+  const names = useRef();
   function handleButton() {
     setName(names.current.value);
+    names.current.value = "";
   }
 
   return (
@@ -23,12 +16,7 @@ export default function Player() {
         {name ? name : "unknown entity"}
       </h2>
       <p>
-        <input
-          type="text"
-          ref={names}
-          // onChange={(e) => handleChange(e.target.value)}
-          value={name}
-        />
+        <input type="text" ref={names} />
         <button onClick={handleButton}>Set Name</button>
       </p>
     </section>
